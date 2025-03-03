@@ -26,5 +26,5 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c $(INCS)
 
 .PHONY: clean
 clean:
-	rm -f $(OBJS) $(TARGET_EXEC)
+	rm -f $(BUILD_DIR)/*.o $(TARGET_EXEC)
 
