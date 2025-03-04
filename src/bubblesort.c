@@ -1,17 +1,18 @@
 /**
- * @file: bubblesort.c
- * @author: Leonardo D. Garcia
+ * @file	bubblesort.c
+ * @author	Leonardo D. Garcia
  *
- * This file contains a function for the bubblesort algorithm.
+ * @brief	This file contains a function for the bubblesort algorithm.
 */
 
 #include "sorts.h"
 
 
 /**
- * Bubblesort algorithm with O(n^2) time complexity.
- * @param [in, out]	arr		Array to sort.
- * @param [in]		size	Size of array to sort.
+ * @brief	Bubblesort algorithm with O(n^2) time complexity.
+ *
+ * @param	arr		Array to sort.
+ * @param	size	Size of array to sort.
 */
 void bubble(float *arr, int size) {
 	int swapped;
