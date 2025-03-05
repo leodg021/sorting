@@ -1,3 +1,5 @@
+# Makefile
+
 CC := gcc
 CFLAGS := -Wall -Wextra 
 
@@ -16,14 +18,17 @@ OBJS := $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRCS))
 
 all: $(OBJS) 
 	@mkdir -p $(BIN_DIR)
-	$(CC) $(CFLAGS) $^ -o $(TARGET_EXEC)
+	@echo "===== Generating executable: $(TARGET_EXEC)"
+	@$(CC) $(CFLAGS) $^ -o $(TARGET_EXEC)
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c 
 	@mkdir -p $(BUILD_DIR)
-	$(CC) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
+	@echo "===== Compiling: $<"
+	@$(CC) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
 
 
 .PHONY: clean
 clean:
+	@echo "===== Cleaning binary and build files."
 	rm -f $(BUILD_DIR)/*.o $(TARGET_EXEC)
 
