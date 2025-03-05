@@ -99,7 +99,7 @@ int main() {
 	test(arr, "MERGESORT", merge);
 	test(arr, "QUICKSORT", quick);
 	test(arr, "HEAPSORT", heapsort);
-	printf("\n===== Finished benchmark testing for sorting algorithms\n.");
+	printf("\n===== Finished benchmark testing for sorting algorithms.\n");
 
 	return 0;
 }
