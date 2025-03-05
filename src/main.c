@@ -12,7 +12,7 @@
 
 #include "sorts.h"
 
-#define SIZE_ARRAY 100
+#define SIZE_ARRAY 1000
 
 // Logger tags.
 #define TEST_SUCCESS "Test successful! Array is now sorted."
@@ -30,14 +30,14 @@ float random_float() {
 /**
 * @brief	Generate a random float number between 0.0 and 1.0.
 *
-* @param	message			Message to display on logger.
+* @param	tag				Message to display on logger.
 * @param	algo_name		Name of the sorting algorithm employed.
 * @param	time_elapsed	Time taken to sort by the algorithm.
 */
-void logger(const char *message, const char *algo_name, double time_elapsed) {
+void logger(const char *tag, const char *algo_name, double time_elapsed) {
 	time_t now;
 	time(&now);
-	printf("%.24s (Time elapsed: %.10f) [%s]: %s\n", ctime(&now), time_elapsed, algo_name, message);
+	printf("%.24s (Time elapsed: %.10f) [%s]: %s\n", ctime(&now), time_elapsed, algo_name, tag);
 }
 
 /**
@@ -62,12 +62,12 @@ void assert_sorted(float *arr, const char *algo_name, double time_elapsed) {
 *
 * @param	arr			Array to be sorted.
 * @param	algo_name	Name of the sorting algorithm employed.
-* @callback callback	Function pointer for the sorting algorithm.
+* @param	callback	Function pointer for the sorting algorithm.
 */
 void test(float *arr, const char *algo_name, void (*callback)(float*, int)) {
 	float clone[SIZE_ARRAY];
 
-	memcpy(arr, clone, sizeof(float) * SIZE_ARRAY);
+	memcpy(clone, arr, sizeof(float) * SIZE_ARRAY);
 
 	clock_t start, end;
 
@@ -96,6 +96,8 @@ int main() {
 	test(arr, "BUBBLESORT", bubble);
 	test(arr, "SELECTIONSORT", selection);
 	test(arr, "INSERTIONSORT", insertion);
+	test(arr, "MERGESORT", merge);
+	test(arr, "QUICKSORT", quick);
 
 	return 0;
 }
