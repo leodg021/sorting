@@ -12,7 +12,7 @@
 
 #include "sorts.h"
 
-#define SIZE_ARRAY 1000
+#define SIZE_ARRAY 100000
 
 // Logger tags.
 #define TEST_SUCCESS "Test successful! Array is now sorted."
@@ -37,7 +37,7 @@ float random_float() {
 void logger(const char *tag, const char *algo_name, double time_elapsed) {
 	time_t now;
 	time(&now);
-	printf("%.24s (Time elapsed: %.10f) [%s]: %s\n", ctime(&now), time_elapsed, algo_name, tag);
+	printf("%.24s (Time elapsed: %2.8fs) [%s]: %s\n", ctime(&now), time_elapsed, algo_name, tag);
 }
 
 /**
@@ -92,12 +92,14 @@ int main() {
 		arr[i] = random_float();
 	}	
 
-
+	printf("===== Initializing benchmark testing for sorting algorithms:\n\n");
 	test(arr, "BUBBLESORT", bubble);
 	test(arr, "SELECTIONSORT", selection);
 	test(arr, "INSERTIONSORT", insertion);
 	test(arr, "MERGESORT", merge);
 	test(arr, "QUICKSORT", quick);
+	test(arr, "HEAPSORT", heapsort);
+	printf("\n===== Finished benchmark testing for sorting algorithms\n.");
 
 	return 0;
 }
