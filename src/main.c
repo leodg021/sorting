@@ -28,33 +28,44 @@ float random_float() {
 }
 
 /**
-* @brief	Generate a random float number between 0.0 and 1.0.
+* @brief	Generates the logger info.
 *
-* @param	tag				Message to display on logger.
 * @param	algo_name		Name of the sorting algorithm employed.
-* @param	time_elapsed	Time taken to sort by the algorithm.
 */
-void logger(const char *tag, const char *algo_name, double time_elapsed) {
+void logger_info(const char *algo_name) {
 	time_t now;
 	time(&now);
-	printf("%.24s (Time elapsed: %2.8fs) [%s]: %s\n", ctime(&now), time_elapsed, algo_name, tag);
+
+	char buff[26];
+	strftime(buff, 26, "%Y-%m-%d %H:%M:%S", localtime(&now));
+	printf("%s [%s]... ", buff, algo_name);
+	fflush(stdout);
+}
+
+/**
+* @brief	Generates logger status.
+*
+* @param	tag				Message to display on logger.
+* @param	time_elapsed	Time taken to sort by the algorithm.
+*/
+void logger_status(const char *tag, double time_elapsed) {
+	printf("(Time elapsed: %2.8fs): %s\n", time_elapsed, tag);
 }
 
 /**
 * @brief	Function to test whether array is sorted.
 *
 * @param	arr				Array to be sorted.
-* @param	algo_name		Name of the sorting algorithm employed.
 * @param	time_elapsed	Time taken to sort by the algorithm.
 */
-void assert_sorted(float *arr, const char *algo_name, double time_elapsed) {
+void assert_sorted(float *arr, double time_elapsed) {
 	for (int i = 0; i < SIZE_ARRAY-1; i++) {
 		if (GT(arr[i], arr[i+1])) {
-			logger(TEST_FAILED, algo_name, time_elapsed);
+			logger_status(TEST_FAILED, time_elapsed);
 			return;
 		}
 	}
-	logger(TEST_SUCCESS, algo_name, time_elapsed);
+	logger_status(TEST_SUCCESS, time_elapsed);
 }
 
 /**
@@ -71,11 +82,13 @@ void test(float *arr, const char *algo_name, void (*callback)(float*, int)) {
 
 	clock_t start, end;
 
+	logger_info(algo_name);
+
 	start = clock();
 	callback(clone, SIZE_ARRAY);
 	end = clock();
 
-	assert_sorted(clone, algo_name, (double) (end - start) / CLOCKS_PER_SEC);
+	assert_sorted(clone, (double) (end - start) / CLOCKS_PER_SEC);
 
 }
 

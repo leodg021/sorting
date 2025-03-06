@@ -1,7 +1,7 @@
 # Makefile
 
-CC := gcc
-CFLAGS := -Wall -Wextra 
+CC := gcc	# Define your compiler of preference.
+CFLAGS := -Wall -Wextra 	# Define your preferred compiler flags.
 
 BIN_DIR := ./bin
 BUILD_DIR := ./build
