@@ -5,8 +5,8 @@
  * @brief	This file contains the header functions for the sorting algorithm.
 */
 
-#ifndef SORT
-#define SORT
+#ifndef SORTS_H
+#define SORTS_H
 
 #define SWAP(T, x, y) do {T temp = x; x = y; y = temp;} while(0)	// Macro for swapping.
 
