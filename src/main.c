@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <time.h>
+#include <time.h>		
 
 #include "sorts.h"
 
@@ -18,8 +18,9 @@
 #define TEST_SUCCESS "Test successful! Array is now sorted."
 #define TEST_FAILED "Test failed! Array remains unsorted."
 
+
 /**
-* @brief	Generate a random float number between 0.0 and 1.0.
+* @brief	Generates a random float number between 0.0 and 1.0.
 *
 * @return	Returns a random float number between 0.0 and 1.0.
 */
@@ -103,7 +104,7 @@ int main() {
 	float arr[SIZE_ARRAY];
 	for (int i = 0; i < SIZE_ARRAY; i++) {
 		arr[i] = random_float();
-	}	
+	}
 
 	printf("===== Initializing benchmark testing for sorting algorithms:\n\n");
 	test(arr, "BUBBLESORT", bubble);
