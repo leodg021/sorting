@@ -4,9 +4,23 @@
 
 This _library_ was written as a practice exercise just to warm up some **C** programming skills. Below are presented some basic information on the sorting algorithms implemented here.
 
+In preparation to the (utterly brief) explanations to be detailed next for the sorting algorithms shown, we add here a brief video by Timo Bingmann in which, with the help of the [Sound of Sorting](https://panthema.net/2013/sound-of-sorting/), displays visualization for these and some other sorting algorithms.
+
+[![15 Sorting Algorithms in 6 Minutes.](https://img.youtube.com/vi/kPRA0W1kECg/0.jpg)](https://www.youtube.com/watch?v=kPRA0W1kECg)
+
 ### Bubblesort
 
-TODO: Write some information about bubblesort.
+Bubblesort is a popular yet inefficient sorting algorithm characterized by constantly swapping the larger elements from bottom to top in the same sense as a bubble "rising" in an array. 
+
+    bubblesort(arr)
+        for i = (arr.length - 1)..1:
+            for j = 0..i:
+                if arr[j] > arr[j+1]:
+                    swap(arr[j], arr[j+1])
+
+To prove that bubblesort works, we note that as we move within the inner loop, the largest element we find is guaranteed to end at the position `i` of the array. As such, we can predict that the subarray `arr[i..arr.length-1]` is to be sorted, as any element `arr[i-1]` is expected to be less or equal to `arr[i]`. With this cycle being repeated across all `i`'s, we arrive at the utmost conclusion that the array will end up being sorted from top to bottom.
+
+In the worst case, bubblesort will perform up to $n$ comparisons and swaps for each element in the array, meaning that one can predict that it execute around $\Theta(n^2)$ operations to sort the array, proving that it will be correct but slow way of organizing ordered data. 
 
 ### Selection sort
 
@@ -74,7 +88,10 @@ To run the program as it is, please execute the generated executable `bin/main`.
 
 ## References
 
-All references taken for this project were based on the following textbooks:
+All references taken for this project were based on the following places:
+
+\[1\] Timo Bingmann. _15 Sorting Algorithms in 6 Minutes._ (May 20, 2013). Accessed: March 18, 2025. \[Online Video\]. Available: [https://www.youtube.com/watch?v=kPRA0W1kECg](https://www.youtube.com/watch?v=kPRA0W1kECg)
 
 \[1\] [T. H. Cormen, C. E. Leiserson, R. L. Rivest, and C. Stein, Introduction to algorithms. Cambridge, MA: The Mit Press, 2022.](https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/)
+
 \[2\] [R. Sedgewick and K. Wayne, Algorithms. Upper Saddle River, NJ: Addison-Wesley, 2011.](https://algs4.cs.princeton.edu/home/)
