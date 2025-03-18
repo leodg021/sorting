@@ -1,3 +1,6 @@
 # Ignore output and build folders.
 bin/
 build/
+
+.cache/
+compile_commands.json
