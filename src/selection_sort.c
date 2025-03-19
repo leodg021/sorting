@@ -17,7 +17,7 @@
 void selection(float *arr, int size) {
 	int curr_max;
 
-	for (int i = size-1; i >= 0; i--) {
+	for (int i = size-1; i > 0; i--) {
 		curr_max = i;
 
 		for (int j = 0; j < i; j++) {
